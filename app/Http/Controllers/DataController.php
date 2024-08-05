@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class DataController extends Controller
 {
@@ -26,18 +28,15 @@ class DataController extends Controller
         return view('news', ['data' => $data]);
     }
 
-    public function newsDetail($id)
+    public function newsDetail($title)
     {
-
+        $slug = Str::slug($title);
         $data = $this->getJsonData();
-        if (!array_key_exists($id, $data)) {
-            return redirect('/news');
-        } else {
-            $news = $data[$id];
-            if ($news['type'] == 'ads') {
-                return redirect('/news');
+
+        foreach ($data as $item) {
+            if (isset($item['title']) && Str::slug($item['title']) == $slug) {
+                return view('newsDetails', ['news' => $item], ['data' => $data]);
             }
-            return view('newsDetails', ['news' => $news], ['data' => $data]);
         }
     }
 }

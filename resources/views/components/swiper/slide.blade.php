@@ -34,7 +34,7 @@
                     <x-base.heading type="third" extraClass="line-clamp-3" firstContent='{{ $title }}' />
                     <Image src={{ asset($image) }} alt="{{ $title }}" />
                     <x-base.paragraph type="secondary" extraClass="!text-base" content="{{ $content }}" />
-                    <div><x-base.button href="newsDetails/{{ $id }}" content="Detay" type="secondary" /></div>
+                    <div><x-base.button href="newsDetails/{{ Str::slug($title) }}" content="Detay" type="secondary" /></div>
                 </div>
             @elseif ($newsType == 'ads')
                 <img src={{ asset($image) }} alt="ads" />
@@ -44,7 +44,7 @@
 @endif
 
 @if ($slideType == 'details')
-    <a href="/newsDetails/{{$id}}" class="swiper-slide !h-auto !w-auto {{$id == request()->segment(2) ? 'bg-secondary' : 'bg-white'}}">
+    <a href="/newsDetails/{{ Str::slug($title) }}" class="swiper-slide !h-auto !w-auto {{$id == request()->segment(2) ? 'bg-secondary' : 'bg-white'}}">
         <div class="transition-all ease-in-out duration-300 hover:bg-secondary cursor-pointer lg:w-full">
             <div class="w-full h-full flex items-center justify-center space-x-4 font-poppins pb-7 pt-12 px-6 lg:px-2 border border-gray border-opacity-50">
                 <div class="relative space-x-3  h-full flex justify-center items-center ">
