@@ -8,10 +8,11 @@
     'extraClass' => '',
     'newsType' => '',
     'count' => '',
+    'categoryUrl' => '',
 ])
 
 @if ($slideType == 'home')
-    <a href="newsDetails/{{ $id }}" class="swiper-slide !h-auto !flex items-center justify-center font-poppins">
+    <a href="/news/current/{{ Str::slug($title) }}" class="swiper-slide !h-auto !flex items-center justify-center font-poppins">
         <div class="relative flex flex-col items-center justify-center !w-3/4 border-b border-b-textColor pb-7 pt-20">
             <span class="text-textColor text-2xl text-center bg-white">
                 {{ $title ?? '' }}
@@ -34,7 +35,7 @@
                     <x-base.heading type="third" extraClass="line-clamp-3" firstContent='{{ $title }}' />
                     <Image src={{ asset($image) }} alt="{{ $title }}" />
                     <x-base.paragraph type="secondary" extraClass="!text-base" content="{{ $content }}" />
-                    <div><x-base.button href="newsDetails/{{ Str::slug($title) }}" content="Detay" type="secondary" /></div>
+                    <div><x-base.button href="{{$categoryUrl}}/{{ Str::slug($title) }}" content="Detay" type="secondary" /></div>
                 </div>
             @elseif ($newsType == 'ads')
                 <img src={{ asset($image) }} alt="ads" />
@@ -44,7 +45,7 @@
 @endif
 
 @if ($slideType == 'details')
-    <a href="/newsDetails/{{ Str::slug($title) }}" class="swiper-slide !h-auto !w-auto {{$id == request()->segment(2) ? 'bg-secondary' : 'bg-white'}}">
+    <a href="{{ Str::slug($title) }}" class="swiper-slide !h-auto !w-auto {{Str::slug($title) == request()->segment(3) ? 'bg-secondary' : 'bg-white'}}">
         <div class="transition-all ease-in-out duration-300 hover:bg-secondary cursor-pointer lg:w-full">
             <div class="w-full h-full flex items-center justify-center space-x-4 font-poppins pb-7 pt-12 px-6 lg:px-2 border border-gray border-opacity-50">
                 <div class="relative space-x-3  h-full flex justify-center items-center ">

@@ -22,21 +22,33 @@ class DataController extends Controller
         return view('app', ['data' => $data]);
     }
 
-    public function news()
+    public function news($url)
     {
-        $data = $this->getJsonData();
-        return view('news', ['data' => $data]);
+        $url = Str::slug($url);
+        $allUrls = ['current', 'economy', 'sport', 'magazine', 'world', 'technology', 'health'];
+        if (!in_array($url, $allUrls)) {
+            return response()->json(['error' => 'Veri bulunamadı'], 404);
+        } else {
+            $data = $this->getJsonData();
+            $news = $data[$url];
+            return view('news', ['data' => $news], ['url' => $url]);
+        }
     }
 
-    public function newsDetail($title)
+    public function newsDetail($title, $url)
     {
-        $slug = Str::slug($title);
         $data = $this->getJsonData();
+        if (!$data[$title]) {
+            return response()->json(['error' => 'Veri bulunamadı'], 404);
+        }
 
-        foreach ($data as $item) {
-            if (isset($item['title']) && Str::slug($item['title']) == $slug) {
-                return view('newsDetails', ['news' => $item], ['data' => $data]);
-            }
+        $news = collect($data[$title])->first(function ($item) use ($url) {
+            return isset($item['title']) && Str::slug($item['title']) == $url;
+        });
+        if ($news) {
+            return view('newsDetails', ['data' => $data[$title]], ['news' => $news]);
+        } else {
+            return "Haber bulunamadı";
         }
     }
 }

@@ -6,31 +6,31 @@
         ],
         [
             'title' => 'Gündem',
-            'href' => '/gundem',
+            'href' => '/news/current',
         ],
         [
             'title' => 'Ekonomi',
-            'href' => '/ekonomi',
+            'href' => '/news/economy',
         ],
         [
             'title' => 'Spor',
-            'href' => '/spor',
+            'href' => '/news/sport',
         ],
         [
             'title' => 'Magazin',
-            'href' => '/magazin',
+            'href' => '/news/magazine',
         ],
         [
             'title' => 'Dünya',
-            'href' => '/dunya',
+            'href' => '/news/world',
         ],
         [
             'title' => 'Teknoloji',
-            'href' => '/teknoloji',
+            'href' => '/news/technology',
         ],
         [
             'title' => 'Sağlık',
-            'href' => '/saglik',
+            'href' => '/news/health',
         ],
     ];
 

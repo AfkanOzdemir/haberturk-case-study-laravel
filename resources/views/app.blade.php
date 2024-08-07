@@ -16,7 +16,7 @@
                             <span class="w-11 border border-white"></span>
                         @endfor
                     </div>
-                    <x-base.button href="/news" content="Görüntüle" type="primary" />
+                    <x-base.button href="news/current" content="Görüntüle" type="primary" />
                 </div>
             </div>
             @include('master.layouts.cophright')
@@ -27,7 +27,7 @@
             @php
                 $counter = 1;
             @endphp
-            @foreach ($data as $item)
+            @foreach ($data['current'] as $item)
                 @if (isset($item['title']))
                     <x-swiper.slide>
                         <x-slot name="id">{{ $item['id'] }}</x-slot>

@@ -1,4 +1,3 @@
-
 @extends('master.default')
 @section('title', 'Detaylar')
 @section('content')
