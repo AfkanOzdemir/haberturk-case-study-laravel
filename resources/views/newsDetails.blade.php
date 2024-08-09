@@ -38,7 +38,9 @@
                     </div>
                     <img src="{{ asset($news['image']) }}" />
                     <div class="bg-secondary -mt-10 w-[calc(100%-10px)] xl:w-[calc(100%-40px)] h-full p-3">
-                        <x-base.paragraph type="third" content="{{ $news['contentDetails'] }}" />
+                        @foreach (explode('\n', $news['contentDetails']) as $item)
+                            <x-base.paragraph type="third" content="{{ $item }}" />
+                        @endforeach
                     </div>
                 </div>
             </div>

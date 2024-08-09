@@ -10,8 +10,10 @@
         'third' => $third,
         default => $primary,
     };
+    $content = str_replace('&#039;', "'", $content);
+    $content = str_replace('&amp;spc', '<br/>', $content);
 @endphp
 
-<p class="font-poppins {{ $class}} {{ $extraClass }}">
-    {{ $content }}
-</p>
+<div class="font-poppins {{ $class }} {{ $extraClass }}">
+    {!! $content !!}
+</div>

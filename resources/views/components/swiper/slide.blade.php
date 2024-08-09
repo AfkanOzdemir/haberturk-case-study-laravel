@@ -49,7 +49,7 @@
         <div class="transition-all ease-in-out duration-300 hover:bg-secondary cursor-pointer lg:w-full">
             <div class="w-full h-full flex items-center justify-center space-x-4 font-poppins pb-7 pt-12 px-6 lg:px-2 border border-gray border-opacity-50">
                 <div class="relative space-x-3  h-full flex justify-center items-center ">
-                    <img src="{{asset($image)}}" class="object-cover object-center w-24 h-24 lg:w-60 lg:h-28 z-20" />
+                    <img src="{{asset($image)}}" class="object-cover object-center w-24 h-24 lg:w-60 lg:h-28 lg:!max-h-28 z-20" />
                     <span class="absolute -top-5 -left-7 lg:-top-10 lg:-left-4 text-6xl font-bold text-black opacity-10 z-10">{{$count}}</span>
                     <div class="flex lg:w-1/2 flex-col justify-start text-black  space-y-3 sm:space-y-5">
                         <div class="font-bold text-sm lg:text-[1.1rem] max-w-36 lg:w-full line-clamp-4">
